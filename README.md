@@ -6,6 +6,7 @@ The data of this project was provided by FigureEight. The data consists of tweet
 The code was written in python 3 and requires the following packages: re, sys, json, plotly, pandas, nltk, flask, sklearn, sqlalchemy and pickle. The following nltk data must be downloaded: punkt, stopwords, wordnet, and averaged_perceptron_tagger.
 
 ### Three Main steps of the project:
+
 #### Create ETL pipeline and upload cleansed data to a database
 This step involved merging two datasets of messages and categories together, cleaning of data, re encoding and splitting category column to create new columns in the dataset. It resulted in 36 new columns. Further these category values were binaraized for easy calculations.
 #### Create Machine Learning Pipeline 
@@ -13,10 +14,11 @@ After loading the cleaned, the data was tokenized, target and feature variables 
 Then first machine learning pipeline was created using CountVectorizer, TfidfTransformer and MultiOutputClassifier as the data had multiple target variables instead of binary targets to classify.
 The model was trained and tested and the resulting f1 scores of all features were stored in a list.
 Then an improved model using grid search cv was fine-tuned upon. F1 scores of both models were compared to see if any difference existed between base model and improved model. The best model was selected and stored in a sav file 
-Notes:
+#### Notes:
 The following paths were used in the terminal respectively
-To run ETL pipeline: python data/process_data.py data/messages.csv data/categories.csv data/Disasters.db
-To run ML pipeline:
+#### To run ETL pipeline: 
+python data/process_data.py data/messages.csv data/categories.csv data/Disasters.db
+#### To run ML pipeline:
 python models/train_classifier.py models/Disasters.db models/disaster_message_model.sav
 For running the pipeline in terminal, the train_classifer.py included only the model used finally and excluded the other model to optimize run time.
 #### Running the app
